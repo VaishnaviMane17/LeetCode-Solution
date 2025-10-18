@@ -1,19 +1,12 @@
-import heapq
-
 class SeatManager:
 
     def __init__(self, n: int):
-        self.seats = list(range(1, n + 1))  # all seats available initially
-        heapq.heapify(self.seats)
-        self.reserved_set = set()  # track reserved seats if needed
+        self.seats = [i for i in range(1, n+1)]
 
     def reserve(self) -> int:
-        seat = heapq.heappop(self.seats)
-        self.reserved_set.add(seat)
-        return seat
+        return heapq.heappop(self.seats)
 
     def unreserve(self, seatNumber: int) -> None:
-        self.reserved_set.discard(seatNumber)  # safe removal
         heapq.heappush(self.seats, seatNumber)
 
         
