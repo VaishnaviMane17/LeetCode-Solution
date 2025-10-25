@@ -12,17 +12,15 @@ class Solution:
         if root.left == None and root.right == None:
             return 1
 
-        if root.left and not root.right:
-            left = self.minDepth(root.left)
+        left = self.minDepth(root.left)       
+        right = self.minDepth(root.right)
+
+        if right == 0 :
             return 1 + left
 
-        if not root.left and root.right:
-            right = self.minDepth(root.right)
+        if left == 0 :
             return 1 + right
-
-        if root.left and root.right:
-            left = self.minDepth(root.left)       
-            right = self.minDepth(root.right)
+            
         return 1 + min(left,right)
         
 
