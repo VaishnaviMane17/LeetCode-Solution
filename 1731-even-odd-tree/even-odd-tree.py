@@ -6,10 +6,12 @@
 #         self.right = right
 class Solution:
     def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
         
         q = deque([root])
         lvl = 0
-
+        
         while q:
             if lvl%2 == 0:
                 prev = float('-inf')
